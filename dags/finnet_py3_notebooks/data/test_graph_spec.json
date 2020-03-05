@@ -1,0 +1,192 @@
+{
+  "name": "test_data",
+  "table_path": "/datasets/finnet/test_data/tables",
+  "poll": "0 0 * * *",
+  "data_uri": "data_uri_value",
+  "graph_uri_env": "GRAPH_DB",
+  "default_index_space": "_canonical_id",
+  "node_lists": [
+    {
+      "table_name": "test_data_chocolate_node_list",
+      "table_path": "/datasets/finnet/test_data/tables",
+      "name": "chocolate nodes",
+      "labels": [
+        "chocolate"
+      ],
+      "index_column": {
+        "resolution_alias": "chocolate",
+        "variable_definition": "String",
+        "name": "id",
+        "unrecognized-key": "value",
+        "hidden": "True"
+      }
+    },
+    {
+      "table_name": "test_data_sweets_node_list",
+      "name": "sweets nodes",
+      "labels": [
+        "sweets"
+      ],
+      "metadata_columns": [
+        {
+          "variable_definition": "String",
+          "friendly_name": "sweetness number",
+          "name": "prop",
+          "use_as_label": "False"
+        }
+      ],
+      "index_column": {
+        "resolution_alias": "sweets",
+        "variable_definition": "String",
+        "name": "id"
+      }
+    },
+    {
+      "table_name": "test_data_toffee_node_list",
+      "name": "toffee nodes",
+      "labels": [
+        "toffee"
+      ],
+      "metadata_columns": [
+        {
+          "variable_definition": "String",
+          "friendly_name": "sweetness number",
+          "name": "prop",
+          "use_as_label": "True"
+        },
+        {
+          "variable_definition": "String",
+          "friendly_name": "hidden value",
+          "name": "hide",
+          "hidden": "True"
+        }
+      ],
+      "index_column": {
+        "resolution_alias": "id",
+        "variable_definition": "String",
+        "name": "id"
+      }
+    }
+  ],
+  "edge_lists": [
+    {
+      "source_column": {
+        "variable_definition": "String",
+        "name": "chocolate_s"
+      },
+      "name": "chocolate_relations",
+      "labels": [
+        "chocolate"
+      ],
+      "table_name": "test_data_chocolate_edge_list",
+      "target_column": {
+        "variable_definition": "String",
+        "name": "chocolate_t"
+      }
+    },
+    {
+      "source_column": {
+        "variable_definition": "String",
+        "name": "sweets_s"
+      },
+      "name": "sweets_relations",
+      "labels": [
+        "sweets"
+      ],
+      "table_name": "test_data_sweets_edge_list",
+      "target_column": {
+        "variable_definition": "String",
+        "name": "sweets_t"
+      }
+    },
+    {
+      "source_column": {
+        "variable_definition": "String",
+        "name": "toffee_s"
+      },
+      "source_metadata_columns": [
+        {
+          "variable_definition": "String",
+          "friendly_name": "edge_metadata",
+          "name": "src_meta"
+        }
+      ],
+      "name": "toffee_relations",
+      "labels": [
+        "toffee"
+      ],
+      "table_name": "test_data_toffee_edge_list",
+      "directed": "False",
+      "target_column": {
+        "variable_definition": "String",
+        "name": "toffee_t"
+      },
+      "target_labels": [
+        "is_target"
+      ],
+      "metadata_columns": [
+        {
+          "variable_definition": "String",
+          "friendly_name": "edge_prop_friendly",
+          "name": "edge_prop"
+        },
+        {
+          "variable_definition": "String",
+          "friendly_name": "edge_label",
+          "name": "edge_label",
+          "use_as_label": "True"
+        },
+        {
+          "variable_definition": "String",
+          "name": "reverse_order"
+        }
+      ],
+      "edge_category": "toffee_edge"
+    },
+    {
+      "source_column": {
+        "variable_definition": "String",
+        "name": "toffee_s"
+      },
+      "name": "toffee_relations_extended",
+      "labels": [
+        "toffee_extended"
+      ],
+      "table_name": "test_data_toffee_edge_list_extended",
+      "target_column": {
+        "variable_definition": "String",
+        "name": "toffee_t"
+      },
+      "metadata_columns": [
+        {
+          "variable_definition": "String",
+          "name": "edge_prop_2"
+        }
+      ],
+      "edge_category": "toffee_edge"
+    }
+  ],
+  "community_lists": [
+    {
+      "table_name": "test_data_toffee_groups_list",
+      "name": "toffee group nodes",
+      "labels": [
+        "toffee_groups"
+      ],
+      "index_column": {
+        "resolution_alias": "sweets",
+        "variable_definition": "String",
+        "name": "id"
+      },
+      "grouping_columns": [
+        {
+          "name": "group",
+          "friendly_name": "common_group"
+        }
+      ],
+      "edge_labels" : [
+        "edge_group_type"
+      ]
+    }
+  ]
+}

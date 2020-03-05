@@ -1,0 +1,14 @@
+toffee_s,toffee_t,src_meta,edge_prop,edge_label,reverse_order
+1,0,foo,ep1,b,
+1,9,foo,ep1,b,
+2,3,foo,ep1,b,
+2,4,foo,ep1,b,
+3,4,foo,ep1,b,
+3,6,foo,ep2,b,
+4,9,bar,ep2,f,
+5,7,bar,ep2,f,
+6,1,bar,ep2,f,
+7,5,bar,ep2,f,
+8,9,bar,ep2,f,
+1,0,foo,ep2,f,
+9,8,foo,ep2,f,reverse
