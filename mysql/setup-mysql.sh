@@ -1,6 +1,6 @@
 while true
 do
-  if docker exec -it mysql-hive mysql -uroot -proot -e "source /setup_script.sql" | grep -q '1050';
+  if docker exec -it mysql-hive-dd mysql -uroot -proot -e "source /setup_script.sql" | grep -q '1050';
   then
     break
   else

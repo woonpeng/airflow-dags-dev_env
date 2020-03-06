@@ -52,9 +52,9 @@ chmod -R g+rwx /usr/local && \
 chgrp -R hadoop /tmp && \
 chmod -R g+rwx /tmp
 
-RUN mkdir dags && \
-chgrp -R hadoop dags && \
-chmod -R g+rwx dags
+RUN mkdir airflow-dags && \
+chgrp -R hadoop airflow-dags && \
+chmod -R g+rwx airflow-dags
 
 RUN echo 'root:root' |chpasswd
 

@@ -2,5 +2,3 @@
 .DS_Store
 *.pyc
 *checkpoint.ipynb
-dags/finnet_py3_notebooks/debug/*
-dags/finnet_py3_notebooks/debug.zip

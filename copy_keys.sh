@@ -1,3 +1,3 @@
-mkdir -p ~/hmaster_keys
-docker cp hadoop-master:/home/hadoop/.ssh/id_rsa ~/hmaster_keys/id_rsa
-docker cp hadoop-master:/home/hadoop/.ssh/id_rsa.pub ~/hmaster_keys/id_rsa.pub
+mkdir -p ~/hmaster-dd_keys
+docker cp hadoop-master-dd:/home/hadoop/.ssh/id_rsa ~/hmaster-dd_keys/id_rsa
+docker cp hadoop-master-dd:/home/hadoop/.ssh/id_rsa.pub ~/hmaster-dd_keys/id_rsa.pub

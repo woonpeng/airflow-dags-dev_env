@@ -14,7 +14,7 @@
   </property>
   <property>
 	  <name>javax.jdo.option.ConnectionURL</name>
-	  <value>jdbc:mysql://mysql-hive:3306/metastore?createDatabaseIfNotExist=true&amp;useSSL=false</value>
+	  <value>jdbc:mysql://mysql-hive-dd:3306/metastore?createDatabaseIfNotExist=true&amp;useSSL=false</value>
 	  <description>metadata is stored in a MySQL server</description>
   </property>
   <property>
@@ -39,7 +39,7 @@
   </property>
   <property>
     <name>hive.metastore.uris</name>
-    <value>thrift://hive-db:9083</value>
+    <value>thrift://hive-db-dd:9083</value>
    </property>
    <property>
     <name>hive.metastore.schema.verification</name>

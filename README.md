@@ -19,7 +19,7 @@ docker build -t mysql-for-hive-img .
 Build Hadoop master image (contains spark too)
 ```
 cd master
-docker build -t hadoop-master-img-centos7 .
+docker build -t hadoop-master-img-centos7-dd .
 ```
 
 Build Hadoop slave image
@@ -30,7 +30,7 @@ docker build -t hadoop-slave-img-centos7 .
 
 Create the bridge network
 ```
-docker network create -d bridge my-bridge-network
+docker network create -d bridge my-bridge-network-dd
 ```
 
 Then run in root project folder (read below if you are using Windows)
@@ -44,7 +44,7 @@ If you are using a Windows machine, and have Git Bash installed, follow this wor
 
 Answer `y` when you are prompted to remove kernel spec.
 
-Also, if you face `org.freedesktop.PolicyKit1 was not provided by any .service files` errors you may have to reinstall `polkit` on `hadoop-master`. Do this:
+Also, if you face `org.freedesktop.PolicyKit1 was not provided by any .service files` errors you may have to reinstall `polkit` on `hadoop-master-dd`. Do this:
 
 ```
 docker exec -it --user root bash
@@ -60,7 +60,7 @@ Go to http://localhost:8088, you will be able to see the hadoop web page with 2 
 Try running a spark submit command, go to localhost:8080 and you can see the active jobs!
 
 ```
-docker exec -it hadoop-master /bin/bash
+docker exec -it hadoop-master-dd /bin/bash
 cd spark
 ./bin/spark-submit --class org.apache.spark.examples.SparkPi \
     --master yarn \
@@ -75,7 +75,7 @@ cd spark
 Check if you can access the hive table
 
 ```
-docker exec -it hadoop-master /bin/bash
+docker exec -it hadoop-master-dd /bin/bash
 spark/bin/spark-shell
 val sqlContext = new org.apache.spark.sql.hive.HiveContext(sc)
 sqlContext.sql("show databases").show()
@@ -84,7 +84,7 @@ sqlContext.sql("show databases").show()
 To start your Jupyter notebook, run:
 
 ```
-docker exec -it --user hadoop hadoop-master jupyter notebook --ip=0.0.0.0 --port=8081
+docker exec -it --user hadoop hadoop-master-dd jupyter notebook --ip=0.0.0.0 --port=8082
 ```
 
 If your containers have stopped, use:
