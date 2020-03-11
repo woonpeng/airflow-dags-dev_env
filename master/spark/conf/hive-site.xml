@@ -2,17 +2,6 @@
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
   <property>
-    <name>hive.exec.local.scratchdir</name>
-    <value>/tmp/hive_temp</value>
-    <description>Local scratch space for Hive jobs</description>
-  </property>
-  <property>
-	  <name>hive.execution.engine</name>
-	  <value>mr</value>
-	  <description>Expects one of [mr, tez, spark]. Chooses execution engine. Options are: mr (Map reduce, default)
-	  </description>
-  </property>
-  <property>
 	  <name>javax.jdo.option.ConnectionURL</name>
 	  <value>jdbc:mysql://mysql-hive-dd:3306/metastore?createDatabaseIfNotExist=true&amp;useSSL=false</value>
 	  <description>metadata is stored in a MySQL server</description>
@@ -32,17 +21,16 @@
 	  <value>root</value>
 	  <description>password to use against metastore database</description>
   </property>
-  <property>
-	  <name>hive.exec.scratchdir</name>
-	  <value>/tmp/hive_tmp</value>
-	  <description>HDFS root scratch dir for Hive jobs which gets created with write all (733) permission</description>
-  </property>
-  <property>
-    <name>hive.metastore.uris</name>
-    <value>thrift://hive-db-dd:9083</value>
-   </property>
    <property>
     <name>hive.metastore.schema.verification</name>
-    <value>true</value>
+    <value>false</value>
    </property>
+  <property>
+	  <name>spark.sql.warehouse.dir</name>
+	  <value>hdfs://hadoop-master-dd:9000/user/hive/warehouse</value>
+  </property>
+    <property>
+	  <name>hive.metastore.warehouse.dir</name>
+	  <value>hdfs://hadoop-master-dd:9000/user/hive/warehouse</value>
+  </property>
 </configuration>

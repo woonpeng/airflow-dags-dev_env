@@ -11,28 +11,28 @@ docker run --tmpfs /run -itd -v $HOST_MASTER_HADOOP_CONF_PATH:$CONT_MASTER_HADOO
 -v $REPO_FOLDER:/usr/local/airflow-dags \
 -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
 -p 8088:8088 -p 57000:57000 -p 9001:9001 -p 50010:50010 -p 4040:4040 -p 8082:8082 -p 80:80 -p 18080:18080 \
---network=my-bridge-network \
+--network=my-bridge-network-dd \
 --name=hadoop-master-dd \
 hadoop-master-img-centos7-dd
 
 docker run --tmpfs /run -itd -v $HOST_MASTER_HADOOP_CONF_PATH:$CONT_MASTER_HADOOP_CONF_PATH \
 -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
---network=my-bridge-network \
+--network=my-bridge-network-dd \
 --name=hadoop-slave1-dd \
 hadoop-slave-img-centos7
 
 docker run --tmpfs /run -itd -v $HOST_MASTER_HADOOP_CONF_PATH:$CONT_MASTER_HADOOP_CONF_PATH \
 -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
---network=my-bridge-network \
+--network=my-bridge-network-dd \
 --name=hadoop-slave2-dd \
 hadoop-slave-img-centos7
 
-docker run --tmpfs /run -itd -v $HOST_HIVE_CONF_PATH:/usr/local/hive/conf \
---network=my-bridge-network \
--v /sys/fs/cgroup:/sys/fs/cgroup:ro \
--p 9083:9083 -p 10002:10002 \
---name=hive-db-dd \
-hive-db-img-centos7
+#docker run --tmpfs /run -itd -v $HOST_HIVE_CONF_PATH:/usr/local/hive/conf \
+#--network=my-bridge-network-dd \
+#-v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+#-p 9083:9083 -p 10002:10002 \
+#--name=hive-db-dd \
+#hive-db-img-centos7
 
 docker run --name mysql-hive-dd -e MYSQL_ROOT_PASSWORD=root -d \
 -p 3306:3306 \

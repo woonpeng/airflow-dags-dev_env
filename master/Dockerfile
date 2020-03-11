@@ -26,6 +26,12 @@ RUN wget https://bootstrap.pypa.io/get-pip.py \
 RUN pip install jupyter findspark
 RUN pip install neo4j
 
+RUN wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.18-1.el8.noarch.rpm \
+&& rpm -i mysql-connector-java-8.0.18-1.el8.noarch.rpm \
+&& yum localinstall mysql-connector-java-8.0.18-1.el8.noarch.rpm
+
+RUN cp /usr/share/java/mysql-connector-java.jar /usr/local/spark/jars
+
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 ENV HADOOP_HOME=/usr/local/hadoop
 ENV SPARK_HOME=/usr/local/spark

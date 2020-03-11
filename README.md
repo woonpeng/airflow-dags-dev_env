@@ -5,11 +5,6 @@ This project contains Hadoop, Spark and Hive
 Build all docker images in the database, master and slave folder
 (It will take awhile ...)
 
-Build hive sql image
-```
-cd hive
-docker build -t hive-db-img-centos7 .
-```
 Build sql image
 ```
 cd mysql
