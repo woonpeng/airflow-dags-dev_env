@@ -12,7 +12,7 @@ RUN wget https://www-us.apache.org/dist/hadoop/common/hadoop-2.9.2/hadoop-2.9.2.
          && rm -rf hadoop-2.9.2 \
          && rm hadoop-2.9.2.tar.gz
 
-RUN wget http://us.mirrors.quenda.co/apache/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz \
+RUN wget https://archive.apache.org/dist/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz \
          && tar -xvf spark-2.4.4-bin-hadoop2.7.tgz \
          && mv spark-2.4.4-bin-hadoop2.7 spark \
          && rm -rf spark-2.4.4-bin-hadoop2.7 \
@@ -24,7 +24,7 @@ RUN wget https://bootstrap.pypa.io/get-pip.py \
 && python3 get-pip.py
 
 RUN pip install jupyter findspark
-RUN pip install neo4j
+#RUN pip install neo4j
 
 RUN wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.18-1.el8.noarch.rpm \
 && rpm -i mysql-connector-java-8.0.18-1.el8.noarch.rpm \
