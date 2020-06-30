@@ -37,3 +37,5 @@ hadoop-slave-img-centos7
 docker run --name mysql-hive-dd -e MYSQL_ROOT_PASSWORD=root -d \
 -p 3306:3306 \
 --network=my-bridge-network-dd mysql-for-hive-img
+
+docker run -itd -p 7474:7474 -p 7687:7687 --network=my-bridge-network-dd --name=neo4j duediligence-neo4j
