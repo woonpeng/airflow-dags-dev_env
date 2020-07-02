@@ -9,3 +9,8 @@ mkdir -p ./secrets/neo4j_keys
 
 # copy keys into neo4j container (volume mount does not work for keys cuz of permission issues?)
 docker cp ./secrets/neo4j_keys/authorized_keys neo4j:/root/.ssh/authorized_keys
+
+# clear neo4j host from hadoop-master-dd
+docker exec hadoop-master-dd rm -rf /home/hadoop/.ssh/known_hosts
+docker exec -t --user hadoop hadoop-master-dd ssh -o StrictHostKeyChecking=no root@neo4j
+echo "Don't worry about 'Access Denied', that is the expected behavior since we are running a forbidden command just to add the host key"
