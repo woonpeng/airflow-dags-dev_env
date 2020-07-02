@@ -4,8 +4,8 @@ set -euo pipefail
 BACKUP_FILENAME=""
 
 mkdir -p {{pipeline.neo4j.backup_path}} && \
-sudo service neo4j stop && \
-  queryresult=$(neo4j-admin check-consistency | grep "record format from store") && \
+service neo4j stop && \
+  queryresult=$(neo4j-admin check-consistency --database=neo4j | grep "record format from store") && \
   regex='record format from store (.*)' && \
   [[ $queryresult =~ $regex ]] && \
   dbaddress=${BASH_REMATCH[1]} && \
@@ -21,6 +21,6 @@ sudo service neo4j stop && \
     printf "Backing up database to $BACKUP_FILENAME\n" && \
     neo4j-admin dump --database=$graphname --to="$BACKUP_FILENAME" && \
   popd
-sudo service neo4j start
+service neo4j start
 
 source {{pipeline.neo4j.scripts_path}}/wait-for-db.sh
