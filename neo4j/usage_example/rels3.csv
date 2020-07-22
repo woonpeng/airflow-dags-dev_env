@@ -1,0 +1,6 @@
+:END_ID(birth_cert_number),:TYPE,:START_ID(person_identification_number)
+c3,parent_of,a5
+c2,parent_of,a1
+c1,parent_of,a2
+c2,parent_of,a2
+c1,parent_of,a1

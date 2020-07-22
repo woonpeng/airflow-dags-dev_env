@@ -1,5 +1,5 @@
 # Hadoop, Spark, Hive
-This project contains Hadoop, Spark and Hive
+This project contains Hadoop, Spark, Hive, and Neo4J
 
 # Setup
 Build all docker images in the database, master and slave folder
@@ -21,6 +21,12 @@ Build Hadoop slave image
 ```
 cd slave
 docker build -t hadoop-slave-img-centos7 .
+```
+
+Build custom Neo4j image
+```
+cd neo4j
+docker build -t duediligence-neo4j .
 ```
 
 Create the bridge network

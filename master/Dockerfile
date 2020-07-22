@@ -71,3 +71,4 @@ RUN yum install sshpass -y
 COPY password.txt password.txt
 
 ENTRYPOINT ["/sbin/init"]
+ENV LANG en_US.UTF-8

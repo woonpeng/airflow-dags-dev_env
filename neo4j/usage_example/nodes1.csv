@@ -1,0 +1,7 @@
+birth_cert_number:ID(birth_cert_number),:LABEL,height,name,age,schooling,birth_date,passed_subject
+c5,boy;child;p2;student,,Eun,8.0,True,,False
+c1,boy;child;p2;student,0.83,Andy,4.0,False,2016-02-12,True
+c6,child;p2;student,,,,,,True
+c4,child;girl;p1;p2;student,1.12,Dawn,5.0,True,2013-10-15,True
+c3,boy;child;p1;student,1.33,Chuck,7.0,True,2013-10-15,True
+c2,child;girl;p1;student,0.75,Becky,3.0,False,2017-05-05,False
