@@ -1,0 +1,7 @@
+person_identification_number:ID(person_identification_number),:LABEL,age,times_married,last_name,is_smoker
+a5,adult;female;married;parent;wife,,1.0,Rossi,False
+a3,adult;male,77.0,,Ali,
+a4,adult;male,53.0,,Wang,True
+a2,adult;female;married;parent;wife,34.0,2.0,Garcia,
+a1,adult;husband;male;married;parent,43.0,1.0,Smith,
+a6,adult;husband;married,,1.0,,

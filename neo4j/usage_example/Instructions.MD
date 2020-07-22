@@ -9,7 +9,7 @@ Get into an interactive shell in the neo4j container:
 Purge with script:
 ```
 neo4j stop
-rm -rf /data/databases/graph.db
+rm -rf /data/databases/neo4j
 ```
 
 Standard import:

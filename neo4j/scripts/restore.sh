@@ -14,7 +14,7 @@ service neo4j stop && \
       BACKUP_FILENAME="${RAW//\//_}".dump
       printf "Restoring backup from $BACKUP_FILENAME\n"
     fi && \
-    neo4j-admin load --database=graph.db --from="$BACKUP_FILENAME" --force=true && \
+    neo4j-admin load --database=graph.db --from="$BACKUP_FILENAME" --force && \
   popd
 service neo4j start
 

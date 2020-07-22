@@ -27,12 +27,8 @@ service neo4j stop && \
           fi
         done
 
-        newgraphdir=$(mktemp -d -p $dbbase)
-        newgraphname=$(basename $newgraphdir)
-        printf "Restoring database from $RAW\n"
-        neo4j-admin import --database=$newgraphname --multiline-fields=true --ignore-missing-nodes=true --ignore-duplicate-nodes=true $argstr
-        rm -rf $graphname
-        mv $newgraphdir $graphname
+        printf "Importing database from $RAW\n"
+        neo4j-admin import --database=$graphname --multiline-fields=true --skip-duplicate-nodes=true $argstr
         rm -rf $tmpdir
       fi
 

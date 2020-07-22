@@ -1,0 +1,11 @@
+:START_ID(birth_cert_number),:END_ID(birth_cert_number),:TYPE,team_name
+c3,c4,project_teammates,agile
+c2,c4,project_teammates,agile
+c1,c5,project_teammates,collaborative
+c4,c6,project_teammates,bold
+c2,c3,project_teammates,agile
+c1,c2,project_teammates,agile
+c1,c4,project_teammates,agile
+c5,c6,project_teammates,bold
+c1,c3,project_teammates,agile
+c4,c5,project_teammates,bold

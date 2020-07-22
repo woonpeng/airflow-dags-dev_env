@@ -1,0 +1,7 @@
+:START_ID(birth_cert_number),:END_ID(birth_cert_number),:TYPE,school_subject
+c4,c5,classmates_with,english
+c5,c6,classmates_with,english
+c4,c6,classmates_with,english
+c2,c3,classmates_with,math
+c3,c4,classmates_with,math
+c2,c4,classmates_with,math

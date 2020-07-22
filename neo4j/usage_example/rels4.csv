@@ -1,0 +1,3 @@
+:START_ID(person_identification_number),:END_ID(person_identification_number),:TYPE,marriage_date
+a1,a2,married_to,2000-07-03
+a5,a6,married_to,2000-05-23

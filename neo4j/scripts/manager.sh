@@ -19,6 +19,7 @@ if [ $# -gt 0 ]; then
   elif [ "$1" == "restore" ]; then
     restore.sh "${@:2}"
   elif [ "$1" == "builddb" ]; then
+    purge.sh "${@:2}"
     builddb.sh "${@:2}"
   elif [ "$1" == "cleanup" ]; then
     cleanup.sh "${@:2}"
