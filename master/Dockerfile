@@ -46,6 +46,7 @@ ENV HADOOP_SSH_OPTS="-p 22"
 ENV HIVE_CONF_DIR=/usr/local/hive/conf
 ENV HIVE_HOME=/usr/local/hive
 ENV PYSPARK_PYTHON=python3
+ENV NEO4J_URI=bolt://neo4j:test@neo4j:7687
 
 COPY sshd_config /etc/ssh/sshd_configs
 
