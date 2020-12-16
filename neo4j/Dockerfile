@@ -3,7 +3,7 @@ FROM neo4j:4.1.1
 ENV NEO4J_AUTH=neo4j/test
 
 # Install findutils os package; used for housekeeping db backups
-RUN   apt update && apt install -y dos2unix findutils sudo python curl \
+RUN apt update && apt install -y dos2unix findutils sudo python curl \
       && curl "https://bootstrap.pypa.io/get-pip.py" | python && pip install j2cli
 
 # Arguments
