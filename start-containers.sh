@@ -4,7 +4,7 @@ HOST_MASTER_HADOOP_CONF_PATH="$PWD/master/hadoop/conf"
 HOST_MASTER_SPARK_CONF_PATH="$PWD/master/spark/conf"
 CONT_MASTER_HADOOP_CONF_PATH='/usr/local/hadoop/etc/hadoop'
 HOST_HIVE_CONF_PATH="$PWD/hive/conf"
-REPO_FOLDER="/c/Users/woonpeng/Documents/repos/due-d/airflow-dags"
+REPO_FOLDER="$(dirname "PWD")/airflow-dags"
 
 docker run --tmpfs /run -itd -v $HOST_MASTER_HADOOP_CONF_PATH:$CONT_MASTER_HADOOP_CONF_PATH \
 -v $HOST_MASTER_SPARK_CONF_PATH:/usr/local/spark/conf \
