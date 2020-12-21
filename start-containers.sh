@@ -4,13 +4,13 @@ HOST_MASTER_HADOOP_CONF_PATH="$PWD/master/hadoop/conf"
 HOST_MASTER_SPARK_CONF_PATH="$PWD/master/spark/conf"
 CONT_MASTER_HADOOP_CONF_PATH='/usr/local/hadoop/etc/hadoop'
 HOST_HIVE_CONF_PATH="$PWD/hive/conf"
-REPO_FOLDER="$(dirname "PWD")/airflow-dags"
+REPO_FOLDER="$(dirname "$PWD")/airflow-dags"
 
 docker run --tmpfs /run -itd -v $HOST_MASTER_HADOOP_CONF_PATH:$CONT_MASTER_HADOOP_CONF_PATH \
 -v $HOST_MASTER_SPARK_CONF_PATH:/usr/local/spark/conf \
 -v $REPO_FOLDER:/usr/local/airflow-dags \
 -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
--p 8088:8088 -p 57000:57000 -p 9001:9001 -p 50010:50010 -p 4040:4040 -p 8082:8082 -p 80:80 -p 18080:18080 \
+-p 8088:8088 -p 57000:57000 -p 9009:9009 -p 50010:50010 -p 4040:4040 -p 8082:8082 -p 80:80 -p 18080:18080 \
 --network=my-bridge-network-dd \
 --name=hadoop-master-dd \
 hadoop-master-img-centos7-dd

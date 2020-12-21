@@ -6,17 +6,17 @@ RUN yum install java-1.8.0-openjdk-devel -y
 RUN yum -y install openssh-server openssh-clients
 
 WORKDIR /usr/local
-RUN wget https://www-us.apache.org/dist/hadoop/common/hadoop-2.9.2/hadoop-2.9.2.tar.gz \
-         && tar -xvf hadoop-2.9.2.tar.gz \
-         && mv hadoop-2.9.2 hadoop \
-         && rm -rf hadoop-2.9.2 \
-         && rm hadoop-2.9.2.tar.gz
+RUN wget https://www-us.apache.org/dist/hadoop/common/hadoop-2.10.1/hadoop-2.10.1.tar.gz \
+         && tar -xvf hadoop-2.10.1.tar.gz \
+         && mv hadoop-2.10.1 hadoop \
+         && rm -rf hadoop-2.10.1 \
+         && rm hadoop-2.10.1.tar.gz
 
-RUN wget https://archive.apache.org/dist/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz \
-         && tar -xvf spark-2.4.4-bin-hadoop2.7.tgz \
-         && mv spark-2.4.4-bin-hadoop2.7 spark \
-         && rm -rf spark-2.4.4-bin-hadoop2.7 \
-         && rm spark-2.4.4-bin-hadoop2.7.tgz
+RUN wget https://archive.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz \
+         && tar -xvf spark-2.4.5-bin-hadoop2.7.tgz \
+         && mv spark-2.4.5-bin-hadoop2.7 spark \
+         && rm -rf spark-2.4.5-bin-hadoop2.7 \
+         && rm spark-2.4.5-bin-hadoop2.7.tgz
 
 RUN yum install python3 -y
 
