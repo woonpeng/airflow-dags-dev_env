@@ -1,4 +1,3 @@
-#!/bin/sh
 echo "creating ssh key for hadoop-master-dd"
 docker exec -it --user hadoop hadoop-master-dd bash -c 'ssh-keygen -t rsa -b 4096 -f /home/hadoop/.ssh/id_rsa -q -N ""'
 docker exec --user hadoop hadoop-master-dd bash -c 'cat /home/hadoop/.ssh/id_rsa.pub >> /home/hadoop/.ssh/authorized_keys'
