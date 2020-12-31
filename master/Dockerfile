@@ -73,3 +73,5 @@ COPY password.txt password.txt
 
 ENTRYPOINT ["/sbin/init"]
 ENV LANG en_US.UTF-8
+
+RUN yum install polkit -y
