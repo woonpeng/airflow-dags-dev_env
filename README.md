@@ -34,6 +34,12 @@ Create the bridge network
 docker network create -d bridge my-bridge-network-dd
 ```
 
+If you encounter any Permission denied issues, try solving it with `chmod`
+```
+RUN chmod a+x <SHELL SCRIPTS TO RUN>
+```
+
+
 Then run in root project folder (read below if you are using Windows)
 ```
 ./setup.sh
