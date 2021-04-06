@@ -3,3 +3,4 @@
 *.pyc
 *checkpoint.ipynb
 secrets/*
+neo4j/blank-db/*

@@ -6,6 +6,14 @@ CONT_MASTER_HADOOP_CONF_PATH='/usr/local/hadoop/etc/hadoop'
 HOST_HIVE_CONF_PATH="$PWD/hive/conf"
 REPO_FOLDER="$(dirname "$PWD")/airflow-dags"
 
+HOST_NEO4J_EXTENSION_SCRIPTS="$PWD/neo4j/scripts"
+HOST_NEO4J_BLANKDBPATH="$PWD/neo4j/blank-db"
+NEO4J_EXTENSION_PATH="/opt/neo4j-extension"
+NEO4J_GRAPHNAME="neo4j"
+NEO4J_BACKUPPATH="/opt/db-backups"
+NEO4J_BLANKDBPATH="/opt/blank-db"
+NEO4J_USER="root"
+
 docker run --tmpfs /run -itd -v $HOST_MASTER_HADOOP_CONF_PATH:$CONT_MASTER_HADOOP_CONF_PATH \
 -v $HOST_MASTER_SPARK_CONF_PATH:/usr/local/spark/conf \
 -v $REPO_FOLDER:/usr/local/airflow-dags \
@@ -38,4 +46,11 @@ docker run --name mysql-hive-dd -e MYSQL_ROOT_PASSWORD=root -d \
 -p 3306:3306 \
 --network=my-bridge-network-dd mysql-for-hive-img
 
-docker run -itd -p 7474:7474 -p 7687:7687 --network=my-bridge-network-dd --name=neo4j duediligence-neo4j
+docker run -itd -v $HOST_NEO4J_EXTENSION_SCRIPTS:$NEO4J_EXTENSION_PATH \
+-v $HOST_NEO4J_BLANKDBPATH:$NEO4J_BLANKDBPATH \
+-e NEO4J_EXTENSION_PATH=$NEO4J_EXTENSION_PATH \
+-e NEO4J_GRAPHNAME=$NEO4J_GRAPHNAME -e NEO4J_BACKUPPATH=$NEO4J_BACKUPPATH \
+-e NEO4J_BLANKDBPATH=$NEO4J_BLANKDBPATH -e NEO4J_USER=$NEO4J_USER \
+-p 7474:7474 -p 7687:7687 \
+--network=my-bridge-network-dd --name=neo4j \
+duediligence-neo4j

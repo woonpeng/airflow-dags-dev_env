@@ -1,6 +1,27 @@
 #!/bin/bash
 set -euo pipefail
 
+# defaults
+port=7687
+
+while [[ "$#" -gt 1 ]]; do
+  case $1 in
+    -p|--port)
+      shift
+      if [ "$#" -gt 0 ] && [ ${1:0:1} != "-" ]; then
+        port=$1
+        shift
+      else
+        echo "Error: Argument for <port> is missing" >&2
+        exit 2
+      fi
+      ;;
+    *) # ignore otherwise
+      shift
+      ;;
+  esac
+done
+
 # check to see if timeout is from busybox?
 TIMEOUT_PATH=$(realpath $(which timeout))
 if [[ $TIMEOUT_PATH =~ "busybox" ]]; then
@@ -15,7 +36,7 @@ fi
 # The official neo4j image starts neo4j once to check for correct credentials
 # stops it, and then starts it for real.
 NEO4J_TIMEOUT=60
-DATABASE_DEV="/dev/tcp/localhost/{{pipeline.neo4j.bolt_port}}"
+DATABASE_DEV="/dev/tcp/localhost/$port"
 echo "Checking database connection ${DATABASE_DEV}"
 timeout ${BUSYTIMEFLAG} ${NEO4J_TIMEOUT} bash <<EOT
 
