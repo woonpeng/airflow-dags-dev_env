@@ -1,11 +1,23 @@
-FROM centos:7
+FROM centos:latest
 
 RUN yum -y update && yum clean all
 RUN yum install wget which initscripts -y
 RUN yum install java-1.8.0-openjdk-devel -y
 RUN yum -y install openssh-server openssh-clients
+RUN yum groupinstall "Development Tools" -y
 
 WORKDIR /usr/local
+RUN wget https://www.sqlite.org/2021/sqlite-autoconf-3350400.tar.gz \
+         && tar -xvf sqlite-autoconf-3350400.tar.gz \
+         && mv sqlite-autoconf-3350400 sqlite \
+         && pushd sqlite \
+         && ./configure \
+         && make \
+         && make install \
+         && popd \
+         && rm -rf sqlite-autoconf-3350400 \
+         && rm sqlite-autoconf-3350400.tar.gz
+
 RUN wget https://www-us.apache.org/dist/hadoop/common/hadoop-2.10.1/hadoop-2.10.1.tar.gz \
          && tar -xvf hadoop-2.10.1.tar.gz \
          && mv hadoop-2.10.1 hadoop \
@@ -68,6 +80,7 @@ RUN echo 'root:root' |chpasswd
 VOLUME [ "/sys/fs/cgroup"]
 EXPOSE 80 18080
 
+RUN yum install epel-release -y
 RUN yum install sshpass -y
 COPY password.txt password.txt
 
