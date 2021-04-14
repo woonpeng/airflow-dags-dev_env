@@ -18,6 +18,8 @@ docker run --tmpfs /run -itd -v $HOST_MASTER_HADOOP_CONF_PATH:$CONT_MASTER_HADOO
 -v $HOST_MASTER_SPARK_CONF_PATH:/usr/local/spark/conf \
 -v $REPO_FOLDER:/usr/local/airflow-dags \
 -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+-e GIT_SSL_NO_VERIFY=True \
+-e TEST_DATA_DIR="/usr/local/airflow-dags/notebooks/test_data" \
 -e AIRFLOW_HOME=/usr/local/airflow \
 -e AIRFLOW__CORE__LOAD_EXAMPLES=False \
 -e AIRFLOW__CORE__DAGS_FOLDER="/usr/local/airflow-dags/dags" \
