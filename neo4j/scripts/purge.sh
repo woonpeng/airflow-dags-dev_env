@@ -50,7 +50,7 @@ queryresult=$(service neo4j status | grep "Bolt enabled on") && \
   boltport=${BASH_REMATCH[1]}
 
 service neo4j stop && \
-  queryresult=$(path=$graphname | grep "record format from store") && \
+  queryresult=$(neo4j-admin check-consistency --database=$graphname | grep "record format from store") && \
   regex='record format from store (.*)' && \
   [[ $queryresult =~ $regex ]] && \
   dbaddress=${BASH_REMATCH[1]} && \
