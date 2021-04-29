@@ -1,4 +1,4 @@
-FROM neo4j:4.1.1
+FROM neo4j:4.2.3
 
 ENV NEO4J_AUTH=neo4j/test
 

@@ -50,7 +50,7 @@ service neo4j stop && \
         unzip $RAW -d $tmpdir
 
         argstr=""
-        for fn in $tmpdir/*.csv; do
+        for fn in $tmpdir/*.csv $tmpdir/*.csv.gz; do
           if [[ "$(head -n 1 $fn)" == *":START_ID"* ]]; then
             argstr=$argstr" --relationships $fn "
           fi

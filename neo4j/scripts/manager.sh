@@ -10,6 +10,7 @@ function help {
   echo "builddb:  Build Neo4j database from a zip file containing the node and edges csv"
   echo "cleanup:  Clean up the backups that are older than 30 days"
   echo "purge:    Purge the Neo4j database"
+  echo "set_read_only: Set database read only or not"
 }
 
 if [ $# -gt 0 ]; then
@@ -25,6 +26,8 @@ if [ $# -gt 0 ]; then
     cleanup.sh "${@:2}"
   elif [ "$1" == "purge" ]; then
     purge.sh "${@:2}"
+  elif [ "$1" == "set_read_only" ]; then
+    set_read_only.sh "${@:2}"
   else
     help
   fi

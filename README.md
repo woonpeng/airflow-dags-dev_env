@@ -26,7 +26,7 @@ docker build -t hadoop-slave-img-centos7 .
 Build custom Neo4j image
 ```
 cd neo4j
-docker build -t duediligence-neo4j .
+DOCKER_BUILDKIT=0 COMPOSE_DOCKER_CLI_BUILD=0 docker build -t duediligence-neo4j .
 ```
 
 Create the bridge network
