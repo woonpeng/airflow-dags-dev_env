@@ -28,8 +28,7 @@ docker run --tmpfs /run -itd -v $HOST_MASTER_HADOOP_CONF_PATH:$CONT_MASTER_HADOO
 -e INGEST_SPECS_PATH="/usr/local/airflow-dags/notebooks/specs/ingest_specs.json" \
 -e JOIN_SPECS_PATH="/usr/local/airflow-dags/notebooks/specs/join_specs.json" \
 -e GRAPH_SPEC_PATH="/usr/local/airflow-dags/notebooks/specs/graph_spec.json" \
--e GRAPH_IMPORT_NODES_DIR="/usr/local/airflow-dags/notebooks/graph_data/{}/nodes" \
--e GRAPH_IMPORT_RELATIONSHIPS_DIR="/usr/local/airflow-dags/notebooks/graph_data/{}/relationships" \
+-e GRAPH_IMPORT_DIR="/usr/local/airflow-dags/notebooks/graph_data/{}" \
 -e PYTHONPATH="/usr/local/airflow-dags" \
 -p 8088:8088 -p 57000:57000 -p 9009:9009 -p 50010:50010 -p 4040:4040 -p 8082:8082 -p 80:80 -p 18080:18080 -p 8086:8086 \
 --network=my-bridge-network-dd \

@@ -2,37 +2,16 @@
 set -euo pipefail
 
 # defaults
-graphname=${NEO4J_GRAPHNAME:-}
-
-while [[ "$#" -gt 1 ]]; do
-  case $1 in
-    -g|--graphname)
-      shift
-      if [ "$#" -gt 0 ] && [ ${1:0:1} != "-" ]; then
-        graphname=$1
-        shift
-      else
-        echo "Error: Argument for <graphname> is missing" >&2
-        exit 2
-      fi
-      ;;
-    *) # ignore otherwise
-      shift
-      ;;
-  esac
-done
-
 if [[ -z $graphname ]]; then
   echo "<graphname> must be specified in environment variables or as a parameter" >&2
   exit 2
 fi
 
-# get bolt port from query
-boltport=7687
-queryresult=$(service neo4j status | grep "Bolt enabled on") && \
-  regex='Bolt enabled on 0.0.0.0:(.*).' && \
-  [[ $queryresult =~ $regex ]] && \
-  boltport=${BASH_REMATCH[1]}
+# read-only check
+if [[ $curr_read_only == true || $curr_read_only == True || $curr_read_only == 1 ]]; then
+  echo "Set dbms.read_only to false to run this command" >&2
+  exit 2
+fi
 
 service neo4j stop && \
   queryresult=$(neo4j-admin check-consistency --database=$graphname | grep "record format from store") && \
@@ -50,12 +29,14 @@ service neo4j stop && \
         unzip $RAW -d $tmpdir
 
         argstr=""
-        for fn in $tmpdir/*.csv $tmpdir/*.csv.gz; do
-          if [[ "$(head -n 1 $fn)" == *":START_ID"* ]]; then
-            argstr=$argstr" --relationships $fn "
+        for fn in $tmpdir/nodes/*.{csv,csv.gz}; do
+          if [ -e $fn ]; then
+              argstr=$argstr" --nodes $fn "
           fi
-          if [[ "$(head -n 1 $fn)" == *":ID"* ]]; then
-            argstr=$argstr" --nodes $fn "
+        done
+        for fn in $tmpdir/relationships/*.{csv,csv.gz}; do
+          if [ -e $fn ]; then
+              argstr=$argstr" --relationships $fn "
           fi
         done
 
